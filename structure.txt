@@ -1,0 +1,26 @@
+Class Questions => list of objects with questions from xlsx as content
+
+ReadExcel()
+WriteExcel()
+
+
+
+GetFromMistral()=> selenium/java => find by keywords => field cu text => output
+
+ 
+CompareEntireStrings() =>  compare function
+SearchKeywords() => keywords exist in excel
+SimilarityScore() => Deep Java Library (DJL)
+
+
+Selenium
+-------
+SignUp()
+Login()
+
+
+
+// Use a library like Deep Java Library (DJL) or any API to get embeddings
+
+
+
