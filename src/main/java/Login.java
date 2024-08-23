@@ -13,7 +13,7 @@ public class Login {
         // Initialize WebDriver (ChromeDriver in this case)
         WebDriver driver = new ChromeDriver();
 
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
 
         try {
             // Open the desired URL
@@ -29,18 +29,31 @@ public class Login {
             WebElement passwordField = driver.findElement(By.id(":R55l3:"));
             passwordField.sendKeys("testtest98@");
 
-            WebElement loginButton = driver.findElement(By.id("login"));
-            loginButton.click();
+            WebElement signInButton = driver.findElement(By.xpath("//button[contains(text(),'Sign in with password')]"));
+            signInButton.click();
 
-            // Optional: Wait for a few seconds to observe the result (not a good practice for production)
             Thread.sleep(5000);
 
-            WebElement chatInput =driver.findElement(By.xpath("//textarea[contains(text(),'Ask anything!')]"));
-
+            WebElement chatInput = driver.findElement(By.xpath("//textarea[@placeholder='Ask anything!']"));
 
             Assert.assertTrue(chatInput.isDisplayed());
 
+            chatInput.sendKeys("What is the hardest natural substance on Earth?");
 
+            WebElement sendButton = driver.findElement(By.xpath("//button[@aria-label='Send question']"));
+            sendButton.click();
+
+            Thread.sleep(5000);
+
+            WebElement answerElement = driver.findElement(By.xpath("//p[contains(text(), 'diamond')]"));
+
+            String AnswerText = answerElement.getText();
+
+            System.out.println("ANSWER TEXT: "+ AnswerText);
+
+            Compare comparer = new Compare();
+
+            System.out.println(comparer.CompareEntireStrings(AnswerText));
 
         } catch (Exception e) {
             e.printStackTrace();
