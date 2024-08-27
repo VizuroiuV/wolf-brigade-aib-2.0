@@ -5,29 +5,32 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Compare {
-    public void SimilarityScore(){
-        /*double similarityScore = calculateSemanticSimilarity(expectedAnswer, actualResponse);
-        if (similarityScore < 0.8) {
-            throw new AssertionError("The similarity score is too low: " + similarityScore);
-        }
-        ;*/
+    public double SimilarityScore(String actualAnswer, String expectedAnswer){
+
+        SimilarityScore sc = new SimilarityScore();
+        double similarityScore = sc.similarityScore(actualAnswer,expectedAnswer);
+        System.out.println("Similarity Score is: "+ String.valueOf(similarityScore));
+
+        return similarityScore;
     }
 
-    public boolean CompareEntireStrings(String actualAnswer){
-        //WebDriver driver = new ChromeDriver();
-        //driver.navigate().to("https://www.browserstack.com/");
-        //String actualAnswer = driver.getTitle();
-        String expectedAnswer = "The hardest natural substance on Earth is diamond. Diamonds are composed of carbon atoms arranged in a specific crystal structure called a diamond cubic, which gives them their exceptional hardness and strength. On the Mohs scale of mineral hardness, diamond is rated as a 10, which is the highest rating. This extreme hardness makes diamonds highly valued for both their aesthetic beauty in jewelry and their industrial applications, such as in cutting tools and abrasives.";
-        //WebElement RealAnswer =driver.findElement(By.xpath("//div[contains(text(),keyword)"));
+    public boolean CompareEntireStrings(String actualAnswer, String expectedAnswer){
+        System.out.println("Actual answer: "+actualAnswer);
+        System.out.println("Expected answer: "+expectedAnswer);
 
-        System.out.println("ACTUAL ANSWER: "+actualAnswer);
-        System.out.println("EXPECTED ANSWER: "+expectedAnswer);
         //compareTo method returns 0 if both strings are equal
         return expectedAnswer.compareTo(actualAnswer) == 0;
 
     }
 
-    public void SearchByKeywords(){
-        ;
+    public boolean SearchByKeywords(String actualAnswer, String keyword){
+        String[] keywords =  keyword.split(" ");
+
+        for(int i=0; i<keywords.length;i++){
+            if (!actualAnswer.contains(keywords[i]))
+                return false;
+        }
+
+        return true;
     }
 }

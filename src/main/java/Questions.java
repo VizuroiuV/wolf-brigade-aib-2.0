@@ -8,15 +8,18 @@ public class Questions {
     private String TextMatching;
     private String CompareByKeywords;
 
+    private String ActualAnswer;
+
     // Constructor
     public Questions(String Question, String ExpectedAnswer, String Keywords,
-                     String SimilarityScore, String TextMatching, String CompareByKeywords) {
+                     String SimilarityScore, String TextMatching, String CompareByKeywords, String ActualAnswer) {
         this.Question = Question;
         this.ExpectedAnswer = ExpectedAnswer;
         this.Keywords = Keywords;
         this.SimilarityScore = SimilarityScore;
         this.TextMatching = TextMatching;
         this.CompareByKeywords = CompareByKeywords;
+        this.ActualAnswer = ActualAnswer;
     }
 
     // Getters and Setters
@@ -68,6 +71,10 @@ public class Questions {
         this.CompareByKeywords = compareByKeywords;
     }
 
+    public String getActualAnswer() { return ActualAnswer;}
+
+    public void setActualAnswer(String actualAnswer) { this.ActualAnswer = actualAnswer; }
+
     // Optional: Override toString() method for easier printing
     @Override
     public String toString() {
@@ -78,6 +85,7 @@ public class Questions {
                 ", column4='" + SimilarityScore + '\'' +
                 ", column5='" + TextMatching + '\'' +
                 ", column6='" + CompareByKeywords + '\'' +
+                ", column7='" + ActualAnswer + '\'' +
                 '}';
     }
 }

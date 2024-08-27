@@ -26,7 +26,7 @@ public class ExcelOperations {
         FormulaEvaluator formulaEvaluator = wb.getCreationHelper().createFormulaEvaluator();
 
         for (Row row : sheet) {
-            String[] fields = new String[6]; // Array to store values for the 6 fields
+            String[] fields = new String[7]; // Array to store values for the 6 fields
 
             int i = 0;
             for (Cell cell : row) {
@@ -69,8 +69,8 @@ public class ExcelOperations {
             }
 
             // If there are exactly 6 fields, create a DataObject and add it to the list
-            if (fields.length == 6) {
-                Questions q = new Questions(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5]);
+            if (fields.length == 7) {
+                Questions q = new Questions(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5],fields[6]);
                 questionsList.add(q);
             }
         }
@@ -86,7 +86,7 @@ public class ExcelOperations {
 
         // Create a header row
         Row headerRow = sheet.createRow(0);
-        String[] headers = {"Question", "ExpectedAnswer", "Keywords", "SimilarityScore", "TextMatching", "CompareByKeywords"};
+        String[] headers = {"Question", "ExpectedAnswer", "Keywords", "SimilarityScore", "TextMatching", "CompareByKeywords", "ActualAnswer"};
 
         for (int i = 0; i < headers.length; i++) {
             Cell cell = headerRow.createCell(i);
@@ -106,6 +106,7 @@ public class ExcelOperations {
             row.createCell(3).setCellValue(q.getSimilarityScore());
             row.createCell(4).setCellValue(q.getTextMatching());
             row.createCell(5).setCellValue(q.getCompareByKeywords());
+            row.createCell(6).setCellValue(q.getActualAnswer());
         }
 
 
