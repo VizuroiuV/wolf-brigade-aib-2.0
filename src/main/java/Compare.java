@@ -5,26 +5,32 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Compare {
-    public void SimilarityScore(){
-        /*double similarityScore = calculateSemanticSimilarity(expectedAnswer, actualResponse);
-        if (similarityScore < 0.8) {
-            throw new AssertionError("The similarity score is too low: " + similarityScore);
+    public double SimilarityScore(String actualAnswer, String expectedAnswer){
+
+        SimilarityScore sc = new SimilarityScore();
+        double similarityScore = sc.similarityScore(actualAnswer,expectedAnswer);
+        System.out.println("Similarity Score is: "+ String.valueOf(similarityScore));
+
+        return similarityScore;
+    }
+
+    public boolean CompareEntireStrings(String actualAnswer, String expectedAnswer){
+        System.out.println("Actual answer: "+actualAnswer);
+        System.out.println("Expected answer: "+expectedAnswer);
+
+        //compareTo method returns 0 if both strings are equal
+        return expectedAnswer.compareTo(actualAnswer) == 0;
+
+    }
+
+    public boolean SearchByKeywords(String actualAnswer, String keyword){
+        String[] keywords =  keyword.split(" ");
+
+        for(int i=0; i<keywords.length;i++){
+            if (!actualAnswer.contains(keywords[i]))
+                return false;
         }
-        ;*/
-    }
 
-    public void CompareEntireStrings(){
-        WebDriver driver = new ChromeDriver();
-        driver.navigate().to("https://www.browserstack.com/");
-        String ActualAnswer = driver.getTitle();
-        String ExpectedAnswer = "Most Reliable App & Cross Browser Testing Platform | BrowserStack";
-        WebElement RealAnswer =driver.findElement(By.xpath("//div[contains(text(),keyword)"));
-
-
-                Assert.assertEquals(ExpectedAnswer, ActualAnswer);
-    }
-
-    public void SearchByKeywords(){
-        ;
+        return true;
     }
 }
