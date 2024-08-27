@@ -1,55 +1,27 @@
-# The Wolf Brigade - UI framework that validates LLM based chatbot -> https://chat.mistral.ai/chat
+# The Wolf Brigade - Test automation UI framework that validates LLM based chatbot -> https://chat.mistral.ai/chat 
 
 This repository contains a set of automated tests for Mistral Chat AI using Selenium with Java. 
-The tests are designed to verify the functionality and answers of Mistral Chat AI, reads the questions from the SampleQuestions_Mistral.xlsx, compares the result from Mistral of the entire answer, it searches for a certain
-keyword and  calculates a similarity score based on comparison of the excel file and chat bot answer, a clear example of reinforced learning  and ensuring accuracy of the generated data of Mistal Large 2 model.
+The tests are designed to verify the functionality and answers of Mistral Chat AI, reads the questions from the SampleQuestions_Mistral.xlsx, compares the result from Mistral of the entire answer, it searches for a certainkeyword and  calculates a similarity score based on comparison of the excel file and chat bot answer, a clear example of reinforced learning  and ensuring accuracy of the generated data of Mistal Large 2 model.
 The Sample Question are basic universal knowledge, but the model responses are different for every query of the same question.
 
+The dataset used is GoogleNews-vectors-negative-300. We used this LLM dataset in order to compare the results of Mistral chat with it and calculate a similarity score. The assertion are made per keyword, it also compares the entire strings and calculates the Cosine Similiarity. Briefly put Mistral AI Chat is validated against the excel file and against Google dataset.
 
+The reading of the provided excel file SampleQuestions_Mistral.xls is done in the dedicated class called ExcelOperations.java While writing the result, the method called WriteExcel creates a new xls file called “Answers”  The login is  made and validated in it’s dedicated abstracted class, so it can be easily maintained  and used by anyone, anywhere, Compare class validates the keywords  and entire strings.
+We have a main class and a class called Questions for getters and  setters and a SimilarityScore class that calculates the similarity score based on a math formula, the result is printed in th console and it it also stored in the xls “Answers “ file.
 
-## Table of Contents
-
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Setup and Installation](#setup-and-installation)
-- [Running Tests](#running-tests)
-- [Test Scenarios](#test-scenarios)
-- [Reporting](#reporting)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Project Structure
-
-```
-├── src
-│   ├── main
-│   │   ├── java
-│   │   └── resources
-│   └── test
-│       ├── java
-│       │   └── com
-│       │       └── yourorganization
-│       │           └── mistral
-│       │               └── tests
-│       └── resources
-├── pom.xml
-└── README.md
-```
-
-- **src/main/java**: Contains application code (if any).
-- **src/test/java**: Contains test classes and test cases.
-- **pom.xml**: Maven configuration file for managing dependencies.
-- **README.md**: Project documentation.
 
 ## Prerequisites
 
 Before running the tests, ensure you have the following installed:
-
+- Docker desktop running
 - Java JDK 8 or higher
 - Maven 3.6 or higher
 - Chrome/Firefox browser (depending on the target browser for testing)
 - Selenium Webdriver version
 - IDE (e.g., IntelliJ IDEA, Eclipse) for development and running tests
+- Before runiing the tests Download the dataset to your local repo from here -> https://www.kaggle.com/datasets/leadbest/googlenewsvectorsnegative300 
+![image](https://github.com/user-attachments/assets/f7640648-bd9f-4f8d-b535-f30d8e22aa91)
+
 
 ## Setup and Installation
 
@@ -72,26 +44,6 @@ Before running the tests, ensure you have the following installed:
 
    Ensure that the appropriate WebDriver (e.g., ChromeDriver) is available in your system's PATH, or configure the drivers in the test setup.
 
-## Running Tests
-
-To execute the test suite, run the following Maven command:
-
-```bash
-mvn test
-```
-
-This will compile the tests and execute them, outputting results to the console and generating a report.
-
-### Running Specific Test
-
-To run a specific test class or method, use the following command:
-
-```bash
-mvn -Dtest=TestClassName#methodName test
-```
-
-Replace `TestClassName` with the name of the test class and `methodName` with the name of the test method.
-
 ## Test Scenarios
 
 The test suite covers various scenarios, including:
@@ -104,24 +56,7 @@ The test suite covers various scenarios, including:
 
 Each test case is designed to be self-contained, focusing on a specific aspect of Mistral Chat AI.
 
-## Reporting
 
-Test results are automatically generated after each test run. The results can be found in the `target/surefire-reports` directory. 
 
-## Contributing
 
-We welcome contributions to enhance the test suite or add new test cases. Please follow these steps:
 
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/your-feature-name`.
-3. Make your changes and commit them: `git commit -m 'Add new feature'`.
-4. Push to the branch: `git push origin feature/your-feature-name`.
-5. Create a pull request detailing your changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-For any questions or issues, feel free to open an issue or contact us. Happy testing!
