@@ -11,18 +11,18 @@ import java.util.List;
 
 public class ExcelOperations {
 
-    List<Questions> questionsList = new ArrayList<Questions>();
-    public List<Questions> ReadExcel() throws IOException {
+    List<Questions> questionsList = new ArrayList<>();
 
-        List<String> lst = new ArrayList<String>();
-        //obtaining input bytes from a file
+    public List<Questions> ReadExcel() throws IOException {
+        List<String> lst = new ArrayList<>();
+        // obtaining input bytes from a file
         FileInputStream fis = new FileInputStream(new File("SampleQuestions_Mistral.xlsx"));
 
-        //creating workbook instance that refers to .xls file
+        // creating workbook instance that refers to .xls file
         XSSFWorkbook wb = new XSSFWorkbook(fis);
-//creating a Sheet object to retrieve the object
+        // creating a Sheet object to retrieve the object
         XSSFSheet sheet = wb.getSheetAt(0);
-//evaluating cell type
+        // evaluating cell type
         FormulaEvaluator formulaEvaluator = wb.getCreationHelper().createFormulaEvaluator();
 
         for (Row row : sheet) {
@@ -70,11 +70,10 @@ public class ExcelOperations {
 
             // If there are exactly 6 fields, create a DataObject and add it to the list
             if (fields.length == 7) {
-                Questions q = new Questions(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5],fields[6]);
+                Questions q = new Questions(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5], fields[6]);
                 questionsList.add(q);
             }
         }
-
 
         return questionsList;
     }
@@ -96,7 +95,7 @@ public class ExcelOperations {
         // Write the data from questionsList to the sheet
         int rowNum = 1; // Start writing after the header
 
-        System.out.println("Number of lines: "+ questionsList.size());
+        System.out.println("Number of lines: " + questionsList.size());
         for (Questions q : questionsList) {
             Row row = sheet.createRow(rowNum++);
 
@@ -108,7 +107,6 @@ public class ExcelOperations {
             row.createCell(5).setCellValue(q.getCompareByKeywords());
             row.createCell(6).setCellValue(q.getActualAnswer());
         }
-
 
         // Adjust column widths to fit the content
         for (int i = 0; i < headers.length; i++) {
