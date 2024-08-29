@@ -20,7 +20,6 @@ Before running the tests, ensure you have the following installed:
 - Selenium Webdriver version
 - IDE (e.g., IntelliJ IDEA, Eclipse) for development and running tests
 - Before runiing the tests Download the dataset to your local repo from here -> https://www.kaggle.com/datasets/leadbest/googlenewsvectorsnegative300 
-![image](https://github.com/user-attachments/assets/f7640648-bd9f-4f8d-b535-f30d8e22aa91)
 
 
 ## Setup and Installation
