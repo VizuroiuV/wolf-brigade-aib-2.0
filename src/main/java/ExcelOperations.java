@@ -2,10 +2,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +13,7 @@ public class ExcelOperations {
     public List<Questions> ReadExcel() throws IOException {
         List<String> lst = new ArrayList<>();
         // obtaining input bytes from a file
-        FileInputStream fis = new FileInputStream(new File("SampleQuestions_Mistral.xlsx"));
+        InputStream fis = ExcelOperations.class.getResourceAsStream("SampleQuestions_Mistral.xlsx");
 
         // creating workbook instance that refers to .xls file
         XSSFWorkbook wb = new XSSFWorkbook(fis);
