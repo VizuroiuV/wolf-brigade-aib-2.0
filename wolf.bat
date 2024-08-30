@@ -1,0 +1,6 @@
+echo Pulling the Docker image...
+docker pull valentinvizuroiu/ai-batlleground
+
+echo Running the Docker container...
+docker run -p 6700:80 valentinvizuroiu/ai-batlleground
+

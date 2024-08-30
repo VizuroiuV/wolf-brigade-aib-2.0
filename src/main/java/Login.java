@@ -1,8 +1,11 @@
+import org.apache.commons.lang.SystemUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.Assert;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,9 +16,16 @@ public class Login {
     WebDriver driver;
     WebDriverWait wait;
 
-    public Login(){
-        System.setProperty("webdriver.chrome.driver", "chromedriver128.exe"); // Update this path
-        driver = new ChromeDriver();
+    public Login() {
+        if (System.getProperty("webdriver.chrome.driver") == null) {
+            System.setProperty("webdriver.chrome.driver", "chromedriver128.exe");
+        }
+        ChromeDriverService service = new ChromeDriverService.Builder().usingPort(9515).build(); // Port number should be unique
+        ChromeOptions options = new ChromeOptions();
+        // options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(service, options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 60);
     }
@@ -35,20 +45,21 @@ public class Login {
 
         wait.until(ExpectedConditions.visibilityOf(sendButton));
 
-        String keywords [] = keyword.split(" ");
+        String keywords[] = keyword.split(" ");
         String key = keywords[0];
         WebElement answerElement = driver.findElement(By.xpath("//p[contains(text(), '" + keywords[0] + "')]"));
 
-        System.out.println("Keyword: "+keywords[0]);
+        System.out.println("Keyword: " + keywords[0]);
 
         //WebElement answerElement = driver.findElement(By.xpath("//p[contains(text(), 'diamond')]"));
 
 
-        System.out.println("Answer: "+ answerElement.getText());
+        System.out.println("Answer: " + answerElement.getText());
 
         return answerElement.getText();
 
     }
+
     public void Navigate(String link) {
         try {
             // Open the desired URL
@@ -74,6 +85,7 @@ public class Login {
             throw new RuntimeException(e);
         }
     }
+
     public static void main(String[] args) throws InterruptedException {
 
     }
