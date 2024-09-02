@@ -9,10 +9,26 @@ The dataset used is GoogleNews-vectors-negative-300. We used this LLM dataset in
 The reading of the provided excel file SampleQuestions_Mistral.xls is done in the dedicated class called ExcelOperations.java While writing the result, the method called WriteExcel creates a new xls file called “Answers”  The login is  made and validated in it’s dedicated abstracted class, so it can be easily maintained  and used by anyone, anywhere, Compare class validates the keywords  and entire strings.
 We have a main class and a class called Questions for getters and  setters and a SimilarityScore class that calculates the similarity score based on a math formula, the result is printed in th console and it it also stored in the xls “Answers “ file.
 
+https://hub.docker.com/repository/docker/valentinvizuroiu/ai-batlleground/general
+
+We create a jar image of our repo and we put the image in docker hubs. The docker commands open a instance of a full ubuntu GUI, where it builds the jar of our maven project, installs all needed software and runs the selenium test. 
+For more details : check our dockerfile
+
+## To simply run the solution:
+
+docker pull valentinvizuroiu/ai-batlleground
+docker run -p 6700:80 valentinvizuroiu/ai-battleground
+ 
+open localhost:6700 in your browser
+ 
+navigate to  aibattleground# ./run.sh  in commmand line
+ 
+The tests should start running
+ 
 
 ## Prerequisites
 
-Before running the tests, ensure you have the following installed:
+Before running the tests on you local machine, ensure you have the following installed:
 - Docker desktop running
 - Java JDK 8 or higher
 - Maven 3.6 or higher
