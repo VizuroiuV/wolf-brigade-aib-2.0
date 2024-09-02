@@ -14,7 +14,7 @@ We have a main class and a class called Questions for getters and  setters and a
 ⚡We create a jar image of our repo and we put the image in docker hubs. The docker commands open a instance of a full ubuntu GUI, where it builds the jar of our maven project, installs all needed software and runs the selenium test. 
 For more details : check our dockerfile
 
-##⚡ To simply run the solution:
+⚡ To simply run the solution:
 
 1. docker pull valentinvizuroiu/ai-batlleground
 2. docker run -p 6700:80 valentinvizuroiu/ai-battleground
@@ -26,7 +26,7 @@ For more details : check our dockerfile
 The tests should start running, all UI being validated in the docker-ubuntu-vnc-desktop
  
 
-## ⚡Prerequisites
+⚡Prerequisites
 
 Before running the tests on you local machine, ensure you have the following installed:
 - Docker desktop running
@@ -38,7 +38,7 @@ Before running the tests on you local machine, ensure you have the following ins
 - Before runiing the tests Download the dataset to your local repo from here -> https://www.kaggle.com/datasets/leadbest/googlenewsvectorsnegative300 
 
 
-## Setup and Installation
+⚡ Setup and Installation
 
 1. **Clone the Repository:**
 
