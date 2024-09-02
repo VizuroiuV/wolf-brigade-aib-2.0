@@ -16,14 +16,14 @@ For more details : check our dockerfile
 
 ## To simply run the solution:
 
-docker pull valentinvizuroiu/ai-batlleground
-docker run -p 6700:80 valentinvizuroiu/ai-battleground
+1. docker pull valentinvizuroiu/ai-batlleground
+2. docker run -p 6700:80 valentinvizuroiu/ai-battleground
  
-open localhost:6700 in your browser
+3. open localhost:6700 in your local browser
  
-navigate to  aibattleground# ./run.sh  in commmand line
+3. navigate in the started ubuntu to  System tools LX terminal aibattleground# ./run.sh  in commmand line
  
-The tests should start running
+The tests should start running, all UI being validated in the docker-ubuntu-vnc-desktop
  
 
 ## Prerequisites
