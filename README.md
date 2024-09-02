@@ -71,6 +71,8 @@ The test suite covers various scenarios, including:
 
 Each test case is designed to be self-contained, focusing on a specific aspect of Mistral Chat AI.
 
+![Caring GIF](https://media.giphy.com/media/H8AWIOvn0fj121MyxR/giphy.gif)
+
 
 
 
